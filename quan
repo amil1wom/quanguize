@@ -1,1 +1,19 @@
 
+#定向
+hostname= www.google.cn
+# Redirect Google Search Service
+^https?:\/\/(www.)?(g|google)\.cn url 302 https://www.google.com
+
+# Redirect Google Maps Service
+^https?:\/\/(ditu|maps).google\.cn url 302 https://maps.google.com
+
+油管
+hostname = -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
+
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) url 302 $1$2$3
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad url reject
+
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v\d\/player\/ad_break url reject
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads url reject
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) url reject
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext url reject
